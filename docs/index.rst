@@ -24,14 +24,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
-.. todo:: Add any Learn guide links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit 1.54" eInk Display Breakouts <https://learn.adafruit.com/adafruit-1-54-eink-display-breakouts>
 
 .. toctree::
     :caption: Related Products
 
-.. todo:: Add any product links here. If there are none, then simply delete this todo and leave
-    the toctree above for use later.
+    Adafruit 1.54" Tri-Color eInk / ePaper 200x200 Display with SRAM <https://www.adafruit.com/product/4868>
 
 .. toctree::
     :caption: Other Links
