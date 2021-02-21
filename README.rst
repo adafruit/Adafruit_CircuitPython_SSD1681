@@ -35,8 +35,7 @@ or individual libraries can be installed using
 
 Adafruit 1.54" Tri-Color eInk / ePaper 200x200 Display with SRAM
 
-<a href="http://www.adafruit.com/products/4868">
-Click here to purchase one from the Adafruit shop</a>
+`Purchase one from the Adafruit shop <http://www.adafruit.com/products/4868>`_
 
 
 Usage Example
