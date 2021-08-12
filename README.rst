@@ -21,7 +21,6 @@ Introduction
 
 CircuitPython `displayio` driver for SSD1681-based ePaper displays
 
-
 Dependencies
 =============
 This driver depends on:
@@ -38,6 +37,30 @@ Adafruit 1.54" Tri-Color eInk / ePaper 200x200 Display with SRAM
 
 `Purchase one from the Adafruit shop <http://www.adafruit.com/products/4868>`_
 
+Installing from PyPI
+=====================
+
+On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
+PyPI <https://pypi.org/project/adafruit-circuitpython-ssd1681/>`_. To install for current user:
+
+.. code-block:: shell
+
+    pip3 install adafruit-circuitpython-ssd1681
+
+To install system-wide (this may be required in some cases):
+
+.. code-block:: shell
+
+    sudo pip3 install adafruit-circuitpython-ssd1681
+
+To install in a virtual environment in your current project:
+
+.. code-block:: shell
+
+    mkdir project-name && cd project-name
+    python3 -m venv .env
+    source .env/bin/activate
+    pip3 install adafruit-circuitpython-ssd1681
 
 Usage Example
 =============
@@ -47,7 +70,7 @@ Usage Example
     import time
     import board
     import displayio
-    import adafruit_ssd1608
+    import adafruit_ssd1681
 
     displayio.release_displays()
 
@@ -63,27 +86,28 @@ Usage Example
     )
     time.sleep(1)
 
-    display = adafruit_ssd1608.SSD1608(
+    display = adafruit_ssd1681.SSD1681(
         display_bus, width=200, height=200, busy_pin=epd_busy, rotation=180
     )
 
     g = displayio.Group()
 
-    f = open("/display-ruler.bmp", "rb")
-
-    pic = displayio.OnDiskBitmap(f)
     # CircuitPython 6 & 7 compatible
+    f = open("/display-ruler.bmp", "rb")
+    pic = displayio.OnDiskBitmap(f)
     t = displayio.TileGrid(
         pic, pixel_shader=getattr(pic, "pixel_shader", displayio.ColorConverter())
     )
-    # CircuitPython 7 compatible only
+
+    # # CircuitPython 7 compatible only
+    # pic = displayio.OnDiskBitmap("/display-ruler.bmp")
     # t = displayio.TileGrid(pic, pixel_shader=pic.pixel_shader)
+
     g.append(t)
 
     display.show(g)
 
     display.refresh()
-
     print("refreshed")
 
     time.sleep(120)
@@ -98,5 +122,5 @@ before contributing to help this project stay welcoming.
 Documentation
 =============
 
-For information on building library documentation, please check out
-`this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
+For information on building library documentation, please check out `this guide
+<https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
