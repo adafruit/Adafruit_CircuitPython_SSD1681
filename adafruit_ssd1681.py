@@ -59,7 +59,7 @@ class SSD1681(displayio.EPaperDisplay):
           Display rotation
     """
 
-    def __init__(self, bus, **kwargs):
+    def __init__(self, bus: displayio.FourWire, **kwargs) -> None:
         start_sequence = bytearray(_START_SEQUENCE)
 
         width = kwargs["width"]
