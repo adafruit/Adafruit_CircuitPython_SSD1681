@@ -69,6 +69,8 @@ class SSD1681(displayio.EPaperDisplay):
         start_sequence[21] = (width - 1) & 0xFF
         start_sequence[22] = ((width >> 8) - 1) & 0xFF
 
+        # RAM is actually only 200 bits high but we use 296 to match the 9 bits
+        # (and therefore two bytes) used to address height.
         super().__init__(
             bus,
             start_sequence,
@@ -86,4 +88,5 @@ class SSD1681(displayio.EPaperDisplay):
             set_current_row_command=0x4F,
             refresh_display_command=0x20,
             always_toggle_chip_select=True,
+            address_little_endian=True
         )
