@@ -42,6 +42,8 @@ _START_SEQUENCE = (
 )
 
 _STOP_SEQUENCE = b"\x10\x81\x01\x64"  # Deep Sleep
+
+
 # pylint: disable=too-few-public-methods
 class SSD1681(displayio.EPaperDisplay):
     r"""SSD1681 driver
