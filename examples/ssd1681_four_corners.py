@@ -13,9 +13,16 @@ import time
 import board
 import busio
 import displayio
-import fourwire
 import terminalio
 import adafruit_ssd1681
+
+# Compatibility with both CircuitPython 8.x.x and 9.x.x.
+# Remove after 8.x.x is no longer a supported release.
+try:
+    from fourwire import FourWire
+except ImportError:
+    from displayio import FourWire
+
 
 displayio.release_displays()
 
@@ -28,7 +35,7 @@ epd_dc = board.EPD_DC
 epd_reset = board.EPD_RESET
 epd_busy = board.EPD_BUSY
 
-display_bus = fourwire.FourWire(
+display_bus = FourWire(
     spi, command=epd_dc, chip_select=epd_cs, reset=epd_reset, baudrate=1000000
 )
 display = adafruit_ssd1681.SSD1681(
