@@ -25,13 +25,14 @@ Implementation Notes
 
 """
 
-# Support both 8.x.x and 9.x.x. Change when 8.x.x is discontinued as a stable release.
+from epaperdisplay import EPaperDisplay
+
 try:
+    import typing
+
     from fourwire import FourWire
-    from epaperdisplay import EPaperDisplay
 except ImportError:
-    from displayio import FourWire
-    from displayio import EPaperDisplay
+    pass
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_SSD1681.git"
@@ -39,7 +40,7 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_SSD1681.git"
 _START_SEQUENCE = (
     b"\x12\x80\x14"  # soft reset and wait 20ms
     b"\x11\x01\x03"  # Ram data entry mode
-    b"\x3C\x01\x05"  # border color
+    b"\x3c\x01\x05"  # border color
     b"\x18\x01\x80"  # Temp control
     b"\x4e\x01\x00"  # ram x count
     b"\x4f\x02\x00\x00"  # ram y count
@@ -96,5 +97,5 @@ class SSD1681(EPaperDisplay):
             set_current_row_command=0x4F,
             refresh_display_command=0x20,
             always_toggle_chip_select=True,
-            address_little_endian=True
+            address_little_endian=True,
         )
